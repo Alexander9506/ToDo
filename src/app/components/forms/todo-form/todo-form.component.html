@@ -1,0 +1,68 @@
+<form [formGroup]="todoForm" (ngSubmit)="submitForm()" class="p-4">
+  <div class="mb-3">
+    <label for="title" class="form-label">Titel</label>
+    <input formControlName="title"
+     type="text" id="title" class="form-control">
+
+    <div *ngIf="controls.title.invalid && (controls.title.dirty || controls.title.touched)"
+    class="alert">
+      <div *ngIf="controls.title.errors?.['required']">
+        Bitte gib einen Titel an.
+      </div>
+      <div *ngIf="controls.title.errors?.['minlength']">
+        Der Titel muss mindestens 5 Zeichen lang sein.
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Beschreibung</label>
+    <input formControlName="description"
+    type="textarea" id="description" class="form-control">
+    <div *ngIf="controls.description.invalid && (controls.description.dirty || controls.description.touched)"
+    class="alert">
+      <div *ngIf="controls.description.errors?.['required']">
+        Bitte gib eine Beschreibung an
+      </div>
+      <div *ngIf="controls.description.errors?.['minlength']">
+        Die Beschreibung muss mindestens 20 Zeichen haben
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3 d-flex justify-content-end">
+    <div class="form-check">
+      <input formControlName="done" type="checkbox" class="form-check-input" id="done" >
+      <label for="done" class="form-check-label">Fertig?</label>
+    </div>
+
+  </div>
+
+  <div>
+    <div class="d-flex justify-content-between pb-2">
+      <label class="form-label">Involvierte Personen</label>
+      <button class="btn btn-primary" type="button" (click)="addPerson()">+</button>
+    </div>
+    <fieldset formArrayName="involvedPersons" class="ps-1">
+      <div *ngFor="let actor of controls.involvedPersons.controls; index as i;">
+        <input  [formControlName]="i"
+        type="text" class="form-control m-2" id="i" >
+        <div *ngIf="controls.involvedPersons.controls[i].invalid && (controls.involvedPersons.controls[i].dirty || controls.involvedPersons.controls[i].touched)"
+        class="alert">
+          <div *ngIf="controls.involvedPersons.controls[i].errors?.['required']">
+            Bitte gib eine Beschreibung an
+          </div>
+          <div *ngIf="controls.involvedPersons.controls[i].errors?.['minlength']">
+            Die Beschreibung muss mindestens 5 Zeichen haben
+          </div>
+      </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end p-4">
+    <button class="btn btn-primary" type="submit" [disabled]="todoForm.invalid">
+      Speichern
+    </button>
+  </div>
+</form>

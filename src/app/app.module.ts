@@ -8,6 +8,9 @@ import { CreateTodoItemComponent } from './components/create-todo-item/create-to
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TodoFormComponent } from './components/forms/todo-form/todo-form.component';
+import { TodoFormCreateComponent } from './components/forms/todo-form-create/todo-form-create.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +20,10 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
     CreateTodoItemComponent,
     HomeComponent,
     PageNotFoundComponent,
+    TodoFormComponent,
+    TodoFormCreateComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
