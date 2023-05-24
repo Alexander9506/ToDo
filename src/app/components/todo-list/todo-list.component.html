@@ -1,0 +1,12 @@
+<div class="px-4">
+  <app-create-todo-item  (itemCreated)="addItem($event)"/>
+  <hr>
+  <div class="d-flex flex-column justify-content-center">
+    <div class="list-group">
+      <div *ngIf="items.length < 1">
+        <p>Noch keine Items hinzugefügt</p>
+      </div>
+      <app-todo-item [item]="item" (deleteItem)="deleteListItem($event)" *ngFor="let item of items"></app-todo-item>
+    </div>
+  </div>
+</div>

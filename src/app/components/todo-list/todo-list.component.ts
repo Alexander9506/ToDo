@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { Item } from 'src/app/shared/Item';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css'],
+  selector: 'app-todo-list',
+  templateUrl: './todo-list.component.html',
+  styleUrls: ['./todo-list.component.css'],
 })
-export class ListComponent {
+export class TodoListComponent {
   items: Item[] = [
     { title: 'Aufraeumen', description: 'Beschreibung', done: false },
     { title: 'Einkaufen', description: 'Beschreibung2', done: true },

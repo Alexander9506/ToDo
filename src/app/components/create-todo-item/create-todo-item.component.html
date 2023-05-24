@@ -1,10 +1,12 @@
-<p>Neues Item erzeugen</p>
-<div>
-  <label for="title">Titel</label>
-  <input type="text" #title id="title"/>
+<h1>Neues Item erzeugen</h1>
+<div class="mb-3">
+  <label for="title" class="form-label">Titel</label>
+  <input type="text" class="form-control" #title id="title"/>
 </div>
-<div >
-  <label for="description">Beschreibung</label>
-  <input type="text" #description id="description"/>
+<div class="mb-3">
+  <label for="description" class="form-label">Beschreibung</label>
+  <input type="text" class="form-control" #description id="description"/>
 </div>
-<button type="button" (click)="createItem({title: title.value, description: description.value, done:false})">Hinzufügen</button>
+
+<button type="button" class="btn btn-primary" (click)="createItem({title: title.value, description: description.value, done:false})">Hinzufügen</button>
+
