@@ -1,0 +1,10 @@
+<p>Neues Item erzeugen</p>
+<div>
+  <label for="title">Titel</label>
+  <input type="text" #title id="title"/>
+</div>
+<div >
+  <label for="description">Beschreibung</label>
+  <input type="text" #description id="description"/>
+</div>
+<button type="button" (click)="createItem({title: title.value, description: description.value, done:false})">Hinzufügen</button>

@@ -1,0 +1,7 @@
+<div *ngIf="item" [ngStyle]="item.done ? {'background-color':'green'}: {}">
+  <p> {{item.title}} </p>
+  <p> {{item.description}}</p>
+  <input type="checkbox" [checked]="item.done" (change)="item.done = !item.done" />
+  <button type="button" (click)="delete()">X</button>
+</div>
+
