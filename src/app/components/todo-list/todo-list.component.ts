@@ -1,29 +1,33 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Item } from 'src/app/shared/Item';
+import { TodoService } from 'src/app/shared/todo.service';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css'],
 })
-export class TodoListComponent {
-  items: Item[] = [
-    { title: 'Aufraeumen', description: 'Beschreibung', done: false },
-    { title: 'Einkaufen', description: 'Beschreibung2', done: true },
-    {
-      title: 'Waesche waschen',
-      description: 'Beschreibung3',
-      done: true,
-    },
-  ];
+export class TodoListComponent implements OnInit {
+  items: Item[] = [];
+
+  constructor(private service: TodoService) {}
+
+  ngOnInit(): void {
+    this.refreshList();
+  }
+
+  private refreshList(): void {
+    this.items = this.service.getTodos();
+  }
 
   addItem(item: Item) {
-    this.items.unshift(item);
+    console.log(item);
+    this.service.addTodo(item);
+    this.refreshList();
   }
 
   deleteListItem(toDelete: Item) {
-    this.items = this.items.filter((item) => {
-      return item != toDelete;
-    });
+    this.service.deleteItem(toDelete);
+    this.refreshList();
   }
 }
